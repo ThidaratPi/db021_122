@@ -1,5 +1,5 @@
 <?php
-$controllers = array('pages'=>['home','error'],'order'=>['index','newOrder','addOrder','search','updateForm','update','deleteConfirm','delete'],'detail_order'=>['index','newdetail_order','search','adddetail_order','updateForm','update','deleteConfirm','delete'],'range_price'=>['index','newrange_price','addrange_price','search','updateForm','update','deleteConfirm','delete']);
+$controllers = array('pages'=>['home','error'],'staff'=>['index','newStaff','addStaff','search','updateForm','update']);
 
 function call($controller,$action){
     require_once("./controllers/".$controller."_controller.php");
@@ -9,20 +9,11 @@ function call($controller,$action){
         case "pages":    $controller = new PagesController();
                         break;
 
-        case "order":   require_once("./models/order.php");
-                        require_once("./models/staff.php");
-                        require_once("./models/customer.php");
-                        $controller = new OrderController();
+        case "staff":    require_once("./models/agency.php");
+                         require_once("./models/staff.php");
+                        $controller = new StaffController();
                         break;
-        case "detail_order" :   require_once("./models/detail_order.php");
-                                require_once("./models/order.php");
-                                require_once("./models/color_of_product.php");
-                                $controller = new Detail_OrderController();
-                                break;
-        case "range_price" : require_once("./models/range_price.php");
-                             require_once("./models/product.php");
-                            $controller = new Range_PriceController();
-                            break;
+      
     }
     $controller->{$action}();
 
