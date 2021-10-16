@@ -25,9 +25,9 @@
     public function updateForm()
     {
        
-        $id_order_cus=$_GET['id_staff'];
+        $id_staff=$_GET['id_staff'];
         $agency_List=Agency::getAll();
-        $staff=Staff::get($id_order_cus);
+        $staff=Staff::get($id_staff);
         require_once('./views/staff/updateForm.php');
        
     }
