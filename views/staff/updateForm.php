@@ -10,6 +10,8 @@
         value="<?php echo $staff->DOB;?>"/></label><br>
 <label>เบอร์โทรศัพท์<input type="text" name="phone"
         value="<?php echo $staff->phone;?>"/></label><br>
+<label>ที่อยู่<input type="text" name="address_staff"
+        value="<?php echo $staff->address_staff;?>"/></label><br>
 <label>หน่วยงาน <select name="name_agency">
     <?php foreach($agency_List as $dep) {
         echo "<option value = $dep->id_agency";

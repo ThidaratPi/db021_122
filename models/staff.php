@@ -68,7 +68,7 @@
     {
         $staffList=[];
         require("connect_database.php");
-        $sql="SELECT * FROM staff WHERE id_staff like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or DOB LIKE '%$key%' or phone LIKE '%$key%' or address_staff LIKE '%$key%' or name_agency LIKE '%$key%'";
+        $sql="SELECT * FROM staff INNER JOIN agency ON id=id_agency WHERE id_staff like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or DOB LIKE '%$key%' or phone LIKE '%$key%' or address_staff LIKE '%$key%' or name LIKE '%$key%'";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
