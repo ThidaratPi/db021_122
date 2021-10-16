@@ -47,6 +47,7 @@
     }
     public static function get($id_staff)
     {
+
         require("connect_database.php");
         $sql="SELECT DISTINCT * FROM staff INNER JOIN agency ON id=id_agency WHERE id_staff='$id_staff'";
         $result=$conn->query($sql);
@@ -65,6 +66,7 @@
     }
     public static function search($key)
     {
+        $staffList=[];
         require("connect_database.php");
         $sql="SELECT * FROM staff WHERE id_staff like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or DOB LIKE '%$key%' or phone LIKE '%$key%' or address_staff LIKE '%$key%' or name_agency LIKE '%$key%'";
         $result=$conn->query($sql);
@@ -98,11 +100,10 @@
         return  ;
      }
     
-     public static function update($id_order_cus,$date_order,$id_staff,$id_customer,$id)
+     public static function update($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$name_agency,$id)
      {
         require("connect_database.php");
-        $sql="UPDATE `order_cutomer` SET `id_order_cus`='$id_order_cus',`date_order`='$date_order',
-        `id_staff`='$id_staff',`id_customer`='$id_customer' WHERE id_order_cus = '$id'";
+        $sql="UPDATE `staff` SET `id_staff`='$id_staff',`first_name`='$first_name',`last_name`='$last_name',`DOB`='$DOB',`phone`='$phone',`address_staff`='$address_staff',`status`=1,`id_agency`='$name_agency' WHERE id_staff = '$id'";
         $result=$conn->query($sql);
         require("connection_close.php");
         return ;
