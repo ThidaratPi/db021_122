@@ -43,12 +43,12 @@
     //     Order::update($id_order_cus,$date_order,$id_staff,$id_customer,$id);
     //     OrderController::index();
     // }
-    // public function search()
-    // {
-    //     $key=$_GET['key'];
-    //     $order_List=Order::search($key);
-    //     require_once('./views/order/index_order.php');
-    // }
+    public function search()
+    {
+        $key=$_GET['key'];
+        $staff_List=Staff::search($key);
+        require_once('./views/staff/index_staff.php');
+    }
   
     
 
