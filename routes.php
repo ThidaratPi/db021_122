@@ -1,5 +1,5 @@
 <?php
-$controllers = array('pages'=>['home','error'],'staff'=>['index','newStaff','addStaff','search','updateForm','update','deleteConfirm','delete']);
+$controllers = array('pages'=>['home','error'],'staff'=>['index','newStaff','addStaff','search','updateForm','update','deleteConfirm','delete'],'position'=>['index','search','updateForm','update']);
 
 function call($controller,$action){
     require_once("./controllers/".$controller."_controller.php");
@@ -9,10 +9,10 @@ function call($controller,$action){
         case "pages":    $controller = new PagesController();
                         break;
 
-        case "staff":    require_once("./models/agency.php");
-                         require_once("./models/staff.php");
+        case "staff":    require_once("./models/staff.php");
                         $controller = new StaffController();
                         break;
+        case "position"  require_once("./models/")
       
     }
     $controller->{$action}();

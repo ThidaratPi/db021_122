@@ -59,7 +59,7 @@
         $address_staff=$my_row[address_staff];
         $status = $my_row[status];
         require("connection_close.php");
-        return new Staff($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$status,$name_agency);
+        return new Staff($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$status);
 
     }
     public static function search($key)
