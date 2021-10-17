@@ -25,7 +25,7 @@
     {
         $staffList=[];
         require("connect_database.php");
-        $sql="SELECT DISTINCT * FROM staff INNER JOIN agency ON id=id_agency";
+        $sql="SELECT DISTINCT * FROM staff INNER JOIN agency ON id=id_agency WHERE status = 1";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -68,7 +68,7 @@
     {
         $staffList=[];
         require("connect_database.php");
-        $sql="SELECT * FROM staff INNER JOIN agency ON id=id_agency WHERE id_staff like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or DOB LIKE '%$key%' or phone LIKE '%$key%' or address_staff LIKE '%$key%' or name LIKE '%$key%'";
+        $sql="SELECT * FROM staff INNER JOIN agency ON id=id_agency WHERE (id_staff like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or DOB LIKE '%$key%' or phone LIKE '%$key%' or address_staff LIKE '%$key%' or name LIKE '%$key%') and status = 1";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -112,7 +112,7 @@
      public static function delete($id)
      {
          require_once("connect_database.php");
-         $sql="DELETE FROM `order_cutomer` WHERE id_order_cus='$id'";
+         $sql="UPDATE `staff` SET`status`=2 WHERE id_staff = $id";
          $result=$conn->query($sql);
          require("connection_close.php");
          return ;

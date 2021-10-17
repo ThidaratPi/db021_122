@@ -51,7 +51,23 @@
         $staff_List=Staff::search($key);
         require_once('./views/staff/index_staff.php');
     }
+    public function deleteConfirm()
+    {
+        $id=$_GET['id_staff'];
+        $staff=Staff::get($id);
+        require_once('./views/staff/deleteConfirm.php');
+
+
+    }
   
+    public function delete()
+    {
+       
+        $id=$_GET['id'];
+        Staff::delete($id);
+        StaffController::index();
+
+    }
     
 
 }
