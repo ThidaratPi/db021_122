@@ -1,4 +1,3 @@
-
 <table border=1>
 <br>new staff <a href=?controller=staff&action=newStaff> click</a><br>
 <form method="get" action="">
