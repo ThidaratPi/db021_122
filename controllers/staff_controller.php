@@ -6,7 +6,6 @@
     }
     public function newStaff(){
         $staff_List=Staff::getAll();
-        $agency_List=Agency::getAll();
         require_once('./views/staff/newStaff.php');
     }
      public function addStaff()
@@ -17,16 +16,14 @@
         $DOB=$_GET['DOB'];
         $phone=$_GET['phone'];
         $address_staff=$_GET['address_staff'];
-        $name_agency=$_GET['name_agency'];
-        echo $name_agency;
-        Staff::Add($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$name_agency);
+    
+        Staff::Add($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff);
         StaffController::index();
     }
     public function updateForm()
     {
        
         $id_staff=$_GET['id_staff'];
-        $agency_List=Agency::getAll();
         $staff=Staff::get($id_staff);
         require_once('./views/staff/updateForm.php');
        
@@ -42,7 +39,7 @@
         $name_agency=$_GET['name_agency'];
         $id=$_GET['id'];
 
-       Staff::update($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$name_agency,$id);
+       Staff::update($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$id);
         StaffController::index();
     }
     public function search()

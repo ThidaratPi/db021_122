@@ -12,13 +12,7 @@
         value="<?php echo $staff->phone;?>"/></label><br>
 <label>ที่อยู่<input type="text" name="address_staff"
         value="<?php echo $staff->address_staff;?>"/></label><br>
-<label>หน่วยงาน <select name="name_agency">
-    <?php foreach($agency_List as $dep) {
-        echo "<option value = $dep->id_agency";
-        if($dep->id_agency==$staff->id_agency){echo " selected='selected'";}
-         echo ">$dep->name_agency</option>";}
-    ?>
-</select></label><br> 
+
 
 <input type="hidden"name="controller"value="staff"/>
 <input type="hidden" name="id" value="<?php echo $staff->id_staff; ?>"/>
