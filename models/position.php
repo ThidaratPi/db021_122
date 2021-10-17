@@ -16,7 +16,7 @@
     {
         $positionList=[];
         require("connect_database.php");
-        $sql="SELECT DISTINCT * FROM staff  WHERE status = 1";
+        $sql="SELECT DISTINCT * FROM position";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {

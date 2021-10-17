@@ -12,7 +12,10 @@ function call($controller,$action){
         case "staff":    require_once("./models/staff.php");
                         $controller = new StaffController();
                         break;
-        case "position"  require_once("./models/")
+        case "position" : require_once("./models/position.php");
+                        $controller = new PositionController();
+                         break;
+
       
     }
     $controller->{$action}();
