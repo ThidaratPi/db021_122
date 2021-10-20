@@ -1,4 +1,4 @@
-<?php echo "<br>Are you sure to delete this order<br>
+<?php echo "<br>Are you sure to delete this staff<br>
             $staff->id_staff $staff->first_name $staff->last_name<br>";?>
 
 <form method="get" action="">
