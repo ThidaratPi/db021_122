@@ -4,9 +4,10 @@
      public $last_name;
     public $phone;
     public $status;
-    public $DOB;
-    public $address_staff;
- 
+    public $id_position;
+    public $name_position;
+    public $date;
+    
 
     public function __construct($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$status)
     {
