@@ -1,89 +1,110 @@
-<?php class Staff{
+<?php class Detail{
+    public $id_staff_checkpoint;
      public $id_staff;
      public $first_name;
      public $last_name;
     public $phone;
-    public $status;
     public $id_position;
     public $name_position;
     public $date;
+    public $name_checkpoint;
+    public $province;
+    public $county;
     
 
-    public function __construct($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$status)
+    public function __construct($id_staff_checkpoint,$id_staff,$first_name,$last_name,$phone,$id_position,$name_position,$date,$name_checkpoint,$province,$county)
     {
+        $this->id_staff_checkpoint=$id_staff_checkpoint;
         $this->id_staff = $id_staff;
         $this->first_name=$first_name;
         $this->last_name=$last_name;
-        $this->DOB=$DOB;
         $this->phone=$phone;
-        $this->address_staff=$address_staff;
-        $this->status=$status;
+        $this->id_position=$id_position;
+        $this->name_position=$name_position;
+        $this->date=$date;
+        $this->name_checkpoint=$name_checkpoint;
+        $this->province=$province;
+        $this->county=$county;
       
        
     }
     public static function getAll()
     {
-        $staffList=[];
+        $detailList=[];
         require("connect_database.php");
-        $sql="SELECT DISTINCT * FROM staff  WHERE status = 1";
+        $sql="SELECT * 
+        FROM (detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date) INNER JOIN CheckPoint ON id_checkpoint=id";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
+            $id_staff_checkpoint=$my_row[id_staff_checkpoint];
             $id_staff = $my_row[id_staff];
             $first_name = $my_row[first_name];
             $last_name= $my_row[last_name];
-            $DOB=$my_row[DOB];
             $phone=$my_row[phone];
-            $address_staff=$my_row[address_staff];
-            $status = $my_row[status];
+            $id_position=$my_row[id_position];
+            $name_position=$my_row[name_position];
+            $date = $my_row[date];
+            $name_checkpoint = $my_row[name_checkpoint];
+            $province = $my_row[province];
+            $county = $my_row[county];
             
            
-            $staffList[] = new Staff($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$status);
+            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$phone,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
         }
         require("connection_close.php");
-        return $staffList;
+        return $detailList;
 
 
     }
-    public static function get($id_staff)
+    public static function get($id_staff_checkpoint)
     {
 
         require("connect_database.php");
-        $sql="SELECT DISTINCT * FROM staff WHERE id_staff='$id_staff'";
+        $sql="SELECT * 
+        FROM (detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date) INNER JOIN CheckPoint ON id_checkpoint=id";
         $result=$conn->query($sql);
         $my_row=$result->fetch_assoc();
+        $id_staff_checkpoint=$my_row[id_staff_checkpoint];
         $id_staff = $my_row[id_staff];
-        $first_name = $my_row[first_name];
-        $last_name= $my_row[last_name];
-        $DOB=$my_row[DOB];
-        $phone=$my_row[phone];
-        $address_staff=$my_row[address_staff];
-        $status = $my_row[status];
+            $first_name = $my_row[first_name];
+            $last_name= $my_row[last_name];
+            $phone=$my_row[phone];
+            $id_position=$my_row[id_position];
+            $name_position=$my_row[name_position];
+            $date = $my_row[date];
+            $name_checkpoint = $my_row[name_checkpoint];
+            $province = $my_row[province];
+            $county = $my_row[county];
         require("connection_close.php");
-        return new Staff($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$status);
+        return new  Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$phone,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
 
     }
     public static function search($key)
     {
-        $staffList=[];
+        $detailList=[];
         require("connect_database.php");
         $sql="SELECT * FROM staff  WHERE (id_staff like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or DOB LIKE '%$key%' or phone LIKE '%$key%' or address_staff LIKE '%$key%' ) and status = 1";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
+            $id_staff_checkpoint=$my_row[id_staff_checkpoint];
             $id_staff = $my_row[id_staff];
             $first_name = $my_row[first_name];
             $last_name= $my_row[last_name];
-            $DOB=$my_row[DOB];
             $phone=$my_row[phone];
-            $address_staff=$my_row[address_staff];
-            $status = $my_row[status];
+            $id_position=$my_row[id_position];
+            $name_position=$my_row[name_position];
+            $date = $my_row[date];
+            $name_checkpoint = $my_row[name_checkpoint];
+            $province = $my_row[province];
+            $county = $my_row[county];
         
            
-            $staffList[] = new Staff($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$status);
+            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$phone,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
         }
         require("connection_close.php");
-        return $staffList;
+        return  $detailList;
 
     }
    

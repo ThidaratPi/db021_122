@@ -1,8 +1,8 @@
 <?php class DetailController{
     public function index()
     {
-        $detail_List=Staff::getAll();
-        require_once("./views/staff/index_staff.php");
+        $detail_List=Detail::getAll();
+        require_once("./views/detail/index_detail.php");
     }
     public function newStaff(){
         $staff_List=Staff::getAll();

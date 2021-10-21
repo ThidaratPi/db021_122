@@ -15,7 +15,9 @@ function call($controller,$action){
         case "position" : require_once("./models/position.php");
                         $controller = new PositionController();
                          break;
-        case "detail" : require_once("")
+        case "detail" : require_once("./models/detail.php");
+                        $controller = new DetailController();
+                        break;
 
       
     }
