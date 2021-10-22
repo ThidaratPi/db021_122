@@ -4,7 +4,7 @@
         $detail_List=Detail::getAll();
         require_once("./views/detail/index_detail.php");
     }
-    public function newStaff(){
+    public function newDetail(){
         $staff_List=Staff::getAll();
         require_once('./views/staff/newStaff.php');
     }
