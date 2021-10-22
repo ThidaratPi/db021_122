@@ -5,10 +5,11 @@
         require_once("./views/detail/index_detail.php");
     }
     public function newDetail(){
-        $staff_List=Staff::getAll();
-        require_once('./views/staff/newStaff.php');
+        $checkpoint_List=Checkpoint::getAll();
+        $date_List=Date::getAll();
+        require_once('./views/detail/newDetail.php');
     }
-     public function addStaff()
+     public function addDetail()
      {
         $id_staff=$_GET['id_staff'];
         $first_name=$_GET['first_name'];

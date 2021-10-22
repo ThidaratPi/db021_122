@@ -1,5 +1,5 @@
 <?php
-$controllers = array('pages'=>['home','error'],'staff'=>['index','newStaff','addStaff','search','updateForm','update','deleteConfirm','delete'],'position'=>['index','search','updateForm','update'],'detail'=>['index','newStaff','addStaff','search','updateForm','update','deleteConfirm','delete']);
+$controllers = array('pages'=>['home','error'],'staff'=>['index','newStaff','addStaff','search','updateForm','update','deleteConfirm','delete'],'position'=>['index','search','updateForm','update'],'detail'=>['index','newDetail','addDetail','search','updateForm','update','deleteConfirm','delete']);
 
 function call($controller,$action){
     require_once("./controllers/".$controller."_controller.php");
@@ -16,6 +16,8 @@ function call($controller,$action){
                         $controller = new PositionController();
                          break;
         case "detail" : require_once("./models/detail.php");
+                        require_once("./models/date.php");
+                        require_once("./models/checkpoint.php");
                         $controller = new DetailController();
                         break;
 
