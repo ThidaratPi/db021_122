@@ -6,19 +6,21 @@
         <button type="submit" name="action" value="search">
 search</button>
 </form>
-<tr><td>เลขบัตรประชาชน</td><td>ชื่อจริง</td><td>นามสกุล</td><td>วันเกิด</td><td>ที่อยู่</td><td>เบอร์โทรศัพท์</td><td>update</td><td>delete</td></tr>
-<?php foreach($staff_List as $staff)
+<tr><td>รหัส</td><td>วันที่</td><td>เวลา</td><td>ชื่อ</td><td>นามสกุล</td><td>จุดตรวจ</td><td>อำเภอ</td><td>จังหวัด</td><td>update</td><td>delete</td></tr>
+<?php foreach($detail_List as $detail)
 {
-        echo "<tr><td>$staff->id_staff</td>
-        <td>$staff->first_name</td>
-        <td>$staff->last_name</td>
-        <td>$staff->DOB</td>
-        <td>$staff->address_staff</td>
-        <td>$staff->phone</td>
+        echo "<tr><td>$detail->id_staff_checkpoint</td>
+        <td>$detail->date</td>
+        <td>$detail->time</td>
+        <td>$detail->first_name</td>
+        <td>$detail->last_name</td>
+        <td>$detail->name_checkpoint</td>
+        <td>$detail->county</td>
+        <td>$detail->province</td>
         <td>
-        <a href=?controller=staff&action=updateForm&id_staff=$staff->id_staff>update</a>
+        <a href=?controller=detail&action=updateForm&id_staff_checkpoint=$detail->id_staff_checkpoint>update</a>
         </td><td>
-        <a href=?controller=staff&action=deleteConfirm&id_staff=$staff->id_staff>delete</a>
+        <a href=?controller=detail&action=deleteConfirm&id_staff_checkpoint=$detail->id_staff_checkpoint>delete</a>
         </td></tr>";
 }
 echo "</table>";

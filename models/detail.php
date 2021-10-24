@@ -3,7 +3,7 @@
      public $id_staff;
      public $first_name;
      public $last_name;
-    public $phone;
+    public $time;
     public $id_position;
     public $name_position;
     public $date;
@@ -12,13 +12,13 @@
     public $county;
     
 
-    public function __construct($id_staff_checkpoint,$id_staff,$first_name,$last_name,$phone,$id_position,$name_position,$date,$name_checkpoint,$province,$county)
+    public function __construct($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county)
     {
         $this->id_staff_checkpoint=$id_staff_checkpoint;
         $this->id_staff = $id_staff;
         $this->first_name=$first_name;
         $this->last_name=$last_name;
-        $this->phone=$phone;
+        $this->time=$time;
         $this->id_position=$id_position;
         $this->name_position=$name_position;
         $this->date=$date;
@@ -41,16 +41,16 @@
             $id_staff = $my_row[id_staff];
             $first_name = $my_row[first_name];
             $last_name= $my_row[last_name];
-            $phone=$my_row[phone];
+            $time=$my_row[time];
             $id_position=$my_row[id_position];
             $name_position=$my_row[name_position];
             $date = $my_row[date];
-            $name_checkpoint = $my_row[name_checkpoint];
+            $name_checkpoint = $my_row[name];
             $province = $my_row[province];
             $county = $my_row[county];
             
            
-            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$phone,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
+            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
         }
         require("connection_close.php");
         return $detailList;
@@ -69,7 +69,7 @@
         $id_staff = $my_row[id_staff];
             $first_name = $my_row[first_name];
             $last_name= $my_row[last_name];
-            $phone=$my_row[phone];
+            $time=$my_row[time];
             $id_position=$my_row[id_position];
             $name_position=$my_row[name_position];
             $date = $my_row[date];
@@ -77,7 +77,7 @@
             $province = $my_row[province];
             $county = $my_row[county];
         require("connection_close.php");
-        return new  Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$phone,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
+        return new  Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
 
     }
     public static function search($key)
@@ -92,7 +92,7 @@
             $id_staff = $my_row[id_staff];
             $first_name = $my_row[first_name];
             $last_name= $my_row[last_name];
-            $phone=$my_row[phone];
+            $time=$my_row[time];
             $id_position=$my_row[id_position];
             $name_position=$my_row[name_position];
             $date = $my_row[date];
@@ -101,7 +101,7 @@
             $county = $my_row[county];
         
            
-            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$phone,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
+            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
         }
         require("connection_close.php");
         return  $detailList;
