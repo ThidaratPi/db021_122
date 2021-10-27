@@ -5,8 +5,9 @@
         require_once("./views/detail/index_detail.php");
     }
     public function newDetail(){
-        $checkpoint_List=Checkpoint::getAll();
         $date_List=Date::getAll();
+        $staff_List=Staff::getAll();
+        $position_List=Position::getAll();
         require_once('./views/detail/newDetail.php');
     }
      public function addDetail()
