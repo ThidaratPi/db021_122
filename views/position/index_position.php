@@ -1,5 +1,6 @@
 <table border=1>
 <form method="get" action="">
+<br>
         <input type="text" name="key">
         <input type="hidden" name="controller" value="position">
         <button type="submit" name="action" value="search">
