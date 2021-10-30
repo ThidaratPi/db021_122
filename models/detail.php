@@ -10,9 +10,10 @@
     public $name_checkpoint;
     public $province;
     public $county;
+    public $id_date;
     
 
-    public function __construct($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county)
+    public function __construct($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county,$id_date)
     {
         $this->id_staff_checkpoint=$id_staff_checkpoint;
         $this->id_staff = $id_staff;
@@ -25,6 +26,7 @@
         $this->name_checkpoint=$name_checkpoint;
         $this->province=$province;
         $this->county=$county;
+        $this->id_date=$id_date;
       
        
     }
@@ -48,9 +50,9 @@
             $name_checkpoint = $my_row[name];
             $province = $my_row[province];
             $county = $my_row[county];
-            
+            $id_date=$my_row[id_date];
            
-            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
+            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county,$id_date);
         }
         require("connection_close.php");
         return $detailList;
@@ -73,11 +75,12 @@
             $id_position=$my_row[id_position];
             $name_position=$my_row[name_position];
             $date = $my_row[date];
-            $name_checkpoint = $my_row[name_checkpoint];
+            $name_checkpoint = $my_row[name];
             $province = $my_row[province];
             $county = $my_row[county];
+            $id_date=$my_row[id_date];
         require("connection_close.php");
-        return new  Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
+        return new  Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county,$id_date);
 
     }
     public static function search($key)
@@ -96,34 +99,34 @@
             $id_position=$my_row[id_position];
             $name_position=$my_row[name_position];
             $date = $my_row[date];
-            $name_checkpoint = $my_row[name_checkpoint];
+            $name_checkpoint = $my_row[name];
             $province = $my_row[province];
             $county = $my_row[county];
-        
+            $id_date=$my_row[id_date];
            
-            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county);
+            $detailList[] = new Detail($id_staff_checkpoint,$id_staff,$first_name,$last_name,$time,$id_position,$name_position,$date,$name_checkpoint,$province,$county,$id_date);
         }
         require("connection_close.php");
         return  $detailList;
 
     }
    
-     public static function Add($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff)
+     public static function Add($id_staff_checkpoint,$id_date,$id_staff,$id_position)
      { 
         
         require("connect_database.php");
-        $sql = "INSERT INTO `staff`(`id_staff`, `first_name`, `last_name`, `DOB`, `phone`, `address_staff`, `status`) 
-        VALUES ('$id_staff','$first_name','$last_name','$DOB','$phone','$address_staff',1);";
+        $sql = "INSERT INTO `detail_of_staff_in_checkpoint`(`id_staff_checkpoint`, `id_date`, `id_staff`, `id_position`) 
+        VALUES ('$id_staff_checkpoint','$id_date','$id_staff','$id_position');";
         $result = $conn->query($sql);
   
         require("connection_close.php");
         return  ;
      }
     
-     public static function update($id_staff,$first_name,$last_name,$DOB,$phone,$address_staff,$id)
+     public static function update($id_staff_checkpoint,$id_date,$id_staff,$id_position,$id)
      {
         require("connect_database.php");
-        $sql="UPDATE `staff` SET `id_staff`='$id_staff',`first_name`='$first_name',`last_name`='$last_name',`DOB`='$DOB',`phone`='$phone',`address_staff`='$address_staff',`status`=1 WHERE id_staff = '$id'";
+        $sql="UPDATE `detail_of_staff_in_checkpoint` SET `id_staff_checkpoint`='$id_staff_checkpoint',`id_date`=$id_date,`id_staff`='$id_staff',`id_position`='$id_position' WHERE id_staff_checkpoint = '$id'";
         $result=$conn->query($sql);
         require("connection_close.php");
         return ;

@@ -24,7 +24,7 @@
     {
         $dateList=[];
         require("connect_database.php");
-        $sql="SELECT DISTINCT * FROM Date NATURAL JOIN CheckPoint";
+        $sql="SELECT DISTINCT * FROM Date INNER JOIN CheckPoint ON id_checkpoint=id";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -32,7 +32,7 @@
             $date = $my_row[date];
             $time= $my_row[time];
             $id_checkpoint = $my_row[id_checkpoint];
-            $name_checkpoint = $my_row[name_checkpoint];
+            $name_checkpoint = $my_row[name];
             $province= $my_row[province];
             $country= $my_row[country];
             

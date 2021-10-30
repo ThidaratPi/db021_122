@@ -1,21 +1,18 @@
 
 <form method="get" action="">
-<label>เลขบัตรประชาชน <input type="text" name="id_staff" 
-        value="<?php echo $staff->id_staff;?>"/></label><br>
-<label>ชื่อจริง <input type="text" name="first_name"
-        value="<?php echo $staff->first_name;?>"/></label><br>
-<label>นามสกุล<input type="text" name="last_name"
-        value="<?php echo $staff->last_name;?>"/></label><br>
-<label>วันเกิด<input type="date" name="DOB"
-        value="<?php echo $staff->DOB;?>"/></label><br>
-<label>เบอร์โทรศัพท์<input type="text" name="phone"
-        value="<?php echo $staff->phone;?>"/></label><br>
-<label>ที่อยู่<input type="text" name="address_staff"
-        value="<?php echo $staff->address_staff;?>"/></label><br>
+<label>รหัส <input type="text" name="id_staff_checkpoint" 
+        value="<?php echo $detail->id_staff_checkpoint;?>"/></label><br>
+<label>ชื่อจริง-นามสกุล <input type="text" name="id_staff"
+        value="<?php echo $deatail->first_name .$detail->last_name;?>"/></label><br>
+<label>หน้าที่<input type="text" name="id_position"
+        value="<?php echo $detail->name_position;?>"/></label><br>
+<label>วันเวลาจุดตรวจ<input type="text" name="id_date"
+        value="<?php echo $detail->date .$detail->time .$detail->county .$detail->province;?>"/></label><br>
 
 
-<input type="hidden"name="controller"value="staff"/>
-<input type="hidden" name="id" value="<?php echo $staff->id_staff; ?>"/>
+
+<input type="hidden"name="controller"value="detail"/>
+<input type="hidden" name="id" value="<?php echo $detail->id_staff_checkpoint; ?>"/>
 <button type= "submit"name="action"value="index">back</button>
 <button type= "submit"name="action"value="update">update</button>
 
