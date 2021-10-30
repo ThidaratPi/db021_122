@@ -25,6 +25,9 @@
        
         $id_staff_checkpoint=$_GET['id_staff_checkpoint'];
         $detail=Detail::get($id_staff_checkpoint);
+        $date_List=Date::getAll();
+        $staff_List=Staff::getAll();
+        $position_List=Position::getAll();
         require_once('./views/detail/updateForm.php');
        
     }
