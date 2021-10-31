@@ -33,13 +33,13 @@
     }
     public function update()
     {
-        $id_staff_checkpoint=$_GET['id_staff_checkpoint'];
+       
         $id_date=$_GET['id_date'];
         $id_staff=$_GET['id_staff'];
         $id_position=$_GET['id_position'];
         $id=$_GET['id'];
-
-       Detail::update($id_staff_checkpoint,$id_date,$id_staff,$id_position,$id);
+       
+       Detail::update($id_date,$id_staff,$id_position,$id);
         DetailController::index();
     }
     public function search()

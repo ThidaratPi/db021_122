@@ -64,7 +64,7 @@
 
         require("connect_database.php");
         $sql="SELECT * 
-        FROM (detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date) INNER JOIN CheckPoint ON id_checkpoint=id";
+        FROM (detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date) INNER JOIN CheckPoint ON id_checkpoint=id WHERE id_staff_checkpoint='$id_staff_checkpoint' ";
         $result=$conn->query($sql);
         $my_row=$result->fetch_assoc();
         $id_staff_checkpoint=$my_row[id_staff_checkpoint];
@@ -123,10 +123,10 @@
         return  ;
      }
     
-     public static function update($id_staff_checkpoint,$id_date,$id_staff,$id_position,$id)
+     public static function update($id_date,$id_staff,$id_position,$id)
      {
         require("connect_database.php");
-        $sql="UPDATE `detail_of_staff_in_checkpoint` SET `id_staff_checkpoint`='$id_staff_checkpoint',`id_date`=$id_date,`id_staff`='$id_staff',`id_position`='$id_position' WHERE id_staff_checkpoint = '$id'";
+        $sql="UPDATE `detail_of_staff_in_checkpoint` SET `id_date`=$id_date,`id_staff`='$id_staff',`id_position`='$id_position' WHERE id_staff_checkpoint = '$id'";
         $result=$conn->query($sql);
         require("connection_close.php");
         return ;

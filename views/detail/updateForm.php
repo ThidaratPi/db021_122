@@ -1,7 +1,7 @@
 
 <form method="get" action="">
-<label>รหัส <input type="text" name="id_staff_checkpoint" 
-        value="<?php echo $detail->id_staff_checkpoint;?>"/></label><br>
+<label> รหัส <input type="text" name="id_staff_checkpoint"
+    value="<?php echo $detail->id_staff_checkpoint;?>"/> </label><br>
 <label>ชื่อพนักงาน <select name="id_staff">
     <?php foreach($staff_List as $dep) {
         echo "<option value = $dep->id_staff";
