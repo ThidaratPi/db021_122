@@ -11,6 +11,7 @@
     $dep->name_position</option>";}
     ?>
 </select></label><br>
+
 <label>วันเวลาจุดตรวจ <select name="id_date">
     <?php foreach($date_List as $dep) {echo "<option value = $dep->id_date>
     วันที่ $dep->date เวลา $dep->time จุดตรวจที่ $dep->name_checkpoint  $dep->country $dep->province </option>";}
