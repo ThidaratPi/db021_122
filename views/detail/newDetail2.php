@@ -10,7 +10,7 @@
 <input type="hidden"name="controller"value="detail"/>
 <input type="hidden" name="id_staff" value="<?php echo $staff->id_staff; ?>"/>
 <input type="hidden" name="id_position" value="<?php echo $position->id_position; ?>"/>
-<button type= "submit"name="action"value="index">back</button>
+<button type= "submit"name="action"value="newDetail1">back</button>
 <button type= "submit"name="action"value="addDetail">Save</button>
 
 </form>

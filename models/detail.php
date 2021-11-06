@@ -59,12 +59,12 @@
 
 
     }
-    public static function getAll2($id_position,$id_staff)
+    public static function getAll2($id_staff)
     {
         $detailList=[];
         require("connect_database.php");
         $sql="SELECT * FROM Date INNER JOIN CheckPoint ON id=id_checkpoint
-        WHERE Date.date  NOT IN  (SELECT date FROM detail_of_staff_in_checkpoint NATURAL JOIN Date WHERE id_staff='$id_staff' and status_d=1 AND id_position='$id_position')";
+        WHERE Date.date  NOT IN  (SELECT date FROM detail_of_staff_in_checkpoint NATURAL JOIN Date WHERE id_staff='$id_staff' and status_d=1 )";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {

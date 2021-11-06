@@ -10,12 +10,21 @@
         $position_List=Position::getAll();
         require_once('./views/detail/newDetail.php');
     }
+    public function newDetail1(){
+        $id_position=$_GET['id_position'];
+        $id_staff=$_GET['id_staff'];
+        $staff=Staff::get($id_staff);
+        $position=Position::get($id_position);
+        $staff_List=Staff::getAll();
+        $position_List=Position::getAll();
+        require_once('./views/detail/newDetail1.php');
+    }
     public function newDetail2(){
         $id_position=$_GET['id_position'];
         $id_staff=$_GET['id_staff'];
         $position=Position::get( $id_position);
         $staff=Staff::get($id_staff);
-        $detail_List=Detail::getAll2($id_position,$id_staff);
+        $detail_List=Detail::getAll2($id_staff);
         require_once('./views/detail/newDetail2.php');
     }
      public function addDetail()
