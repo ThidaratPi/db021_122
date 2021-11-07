@@ -59,7 +59,7 @@
     {
         $key=$_GET['key'];
         $detail_List=Detail::search($key);
-        require_once('./views/detail/index_staff.php');
+        require_once('./views/detail/index_detail.php');
     }
     public function deleteConfirm()
     {
