@@ -67,6 +67,16 @@
         return $positionList;
 
     }
+    public static function Add($id_position,$name_position,$income)
+    { 
+       
+       require("connect_database.php");
+       $sql = "INSERT INTO `position`(`id_position`, `name_position`, `income`) VALUES ('$id_position','$name_position',$income)";
+       $result = $conn->query($sql);
+ 
+       require("connection_close.php");
+       return  ;
+    }
    
 
      public static function update($id_position,$name_position,$income,$id)
@@ -77,6 +87,14 @@
         require("connection_close.php");
         return ;
         
+     }
+     public static function delete($id)
+     {
+         require_once("connect_database.php");
+         $sql="UPDATE `position` SET`status`=2 WHERE id_position = $id";
+         $result=$conn->query($sql);
+         require("connection_close.php");
+         return ;
      }
 
 
