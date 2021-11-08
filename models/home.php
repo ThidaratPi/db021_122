@@ -53,7 +53,10 @@
     {
         $homeList=[];
         require("connect_database.php");
-        $sql="SELECT * FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id  WHERE (id_staff_checkpoint like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or date LIKE '%$key%' or time LIKE '%$key%' or name LIKE '%$key%' or province LIKE '%$key%' or county LIKE '%$key%') and status = 1";
+        $sql="SELECT date,time,name,province,county,id_date ,id,COUNT(id_staff) AS num
+        FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id WHERE (date LIKE '%$key%' or time LIKE '%$key%' or name LIKE '%$key%' or province LIKE '%$key%' or county LIKE '%$key%' ) and status = 1
+        GROUP By id_date
+       HAVING num LIKE '%$key%'";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
