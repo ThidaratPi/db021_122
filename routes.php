@@ -1,12 +1,13 @@
 <?php
-$controllers = array('pages'=>['home','error'],'staff'=>['index','newStaff','addStaff','search','updateForm','update','deleteConfirm','delete'],'position'=>['index','newPosition','addPosition','search','updateForm','update','deleteConfirm','delete'],'detail'=>['index','newDetail','newDetail1','newDetail2','addDetail','search','updateForm','update','deleteConfirm','delete']);
+$controllers = array('pages'=>['home','error','search'],'staff'=>['index','newStaff','addStaff','search','updateForm','update','deleteConfirm','delete'],'position'=>['index','newPosition','addPosition','search','updateForm','update','deleteConfirm','delete'],'detail'=>['index','newDetail','newDetail1','newDetail2','addDetail','search','updateForm','update','deleteConfirm','delete']);
 
 function call($controller,$action){
     require_once("./controllers/".$controller."_controller.php");
     
     switch($controller)
     {
-        case "pages":    $controller = new PagesController();
+        case "pages":   require_once("./models/home.php");
+                          $controller = new PagesController();
                         break;
 
         case "staff":    require_once("./models/staff.php");
