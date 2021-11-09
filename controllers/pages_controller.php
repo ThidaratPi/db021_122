@@ -12,6 +12,7 @@
         public function search()
     {
         $key=$_GET['key'];
+        $home=Home::getamount();
         $home_List=Home::search($key);
         require_once('views/pages/home.php');
     }
