@@ -88,16 +88,7 @@
         return ;
         
      }
-     public static function delete($id)
-     {
-         require_once("connect_database.php");
-         $sql="UPDATE `position` SET`status`=2 WHERE id_position = $id";
-         $result=$conn->query($sql);
-         require("connection_close.php");
-         return ;
-     }
-
-
+     
 
 
 }

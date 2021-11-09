@@ -35,7 +35,7 @@
         $detailList=[];
         require("connect_database.php");
         $sql="SELECT * 
-        FROM (detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date) INNER JOIN CheckPoint ON id_checkpoint=id WHERE status_d=1 ORDER BY id_staff_checkpoint";
+        FROM (detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date) INNER JOIN CheckPoint ON id_checkpoint=id  ORDER BY id_staff_checkpoint";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -64,7 +64,7 @@
         $detailList=[];
         require("connect_database.php");
         $sql="SELECT * FROM Date INNER JOIN CheckPoint ON id=id_checkpoint
-        WHERE Date.date  NOT IN  (SELECT date FROM detail_of_staff_in_checkpoint NATURAL JOIN Date WHERE id_staff='$id_staff' and status_d=1 )";
+        WHERE Date.date  NOT IN  (SELECT date FROM detail_of_staff_in_checkpoint NATURAL JOIN Date WHERE id_staff='$id_staff' )";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -110,7 +110,7 @@
     {
         $detailList=[];
         require("connect_database.php");
-        $sql="SELECT * FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id  WHERE (id_staff_checkpoint like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or date LIKE '%$key%' or time LIKE '%$key%' or name LIKE '%$key%' or province LIKE '%$key%' or county LIKE '%$key%') and status = 1";
+        $sql="SELECT * FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id  WHERE (id_staff_checkpoint like '%$key%' or first_name like '%$key%' or last_name like '%$key%' or date LIKE '%$key%' or time LIKE '%$key%' or name LIKE '%$key%' or province LIKE '%$key%' or county LIKE '%$key%') ";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -138,8 +138,8 @@
      { 
         
         require("connect_database.php");
-        $sql = "INSERT INTO `detail_of_staff_in_checkpoint`( `id_date`, `id_staff`, `id_position`, `status_d`) 
-        VALUES ('$id_date','$id_staff','$id_position',1);";
+        $sql = "INSERT INTO `detail_of_staff_in_checkpoint`( `id_date`, `id_staff`, `id_position`) 
+        VALUES ('$id_date','$id_staff','$id_position');";
         $result = $conn->query($sql);
   
         require("connection_close.php");
@@ -158,7 +158,7 @@
      public static function delete($id)
      {
          require_once("connect_database.php");
-         $sql="UPDATE `detail_of_staff_in_checkpoint` SET`status_d`=2 WHERE id_staff_checkpoint = $id";
+         $sql="DELETE FROM `detail_of_staff_in_checkpoint`  WHERE id_staff_checkpoint = $id";
          $result=$conn->query($sql);
          require("connection_close.php");
          return ;

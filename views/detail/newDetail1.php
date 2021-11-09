@@ -3,7 +3,7 @@
 <?php foreach($staff_List as $dep) {
         echo "<option value = $dep->id_staff";
         if($dep->id_staff==$staff->id_staff){echo " selected='selected'";}
-         echo ">$dep->first_name $dep->last_name</option>";}
+         echo ">เลขบัตรประชาชน $dep->id_staff ชื่อ $dep->first_name นามสกุล $dep->last_name</option>";}
     ?>
 </select></label><br>
 

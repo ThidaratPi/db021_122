@@ -7,7 +7,7 @@
         <button type="submit" name="action" value="search">
 search</button>
 </form>
-<tr><td>รหัสตำแหน่ง</td><td>ชื่อตำแหน่ง</td><td>รายได้</td><td>update</td><td>delete</td></tr>
+<tr><td>รหัสตำแหน่ง</td><td>ชื่อตำแหน่ง</td><td>รายได้</td><td>update</td></tr>
 <?php foreach($position_List as $position)
 {
         echo "<tr><td>$position->id_position</td>
@@ -15,8 +15,6 @@ search</button>
         <td>$position->income</td>
         <td>
         <a href=?controller=position&action=updateForm&id_position=$position->id_position>update</a>
-        </td><td>
-        <a href=?controller=position&action=deleteConfirm&id_position=$position->id_position>delete</a>
         </td></tr>";
 }
 echo "</table>";

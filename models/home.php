@@ -27,7 +27,7 @@
         $homeList=[];
         require("connect_database.php");
         $sql="SELECT date,time,name,province,county,id_date ,id,COUNT(id_staff) AS num
-        FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id WHERE status_d=1
+        FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id 
         GROUP By id_date";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
@@ -54,7 +54,11 @@
         $homeList=[];
         require("connect_database.php");
         $sql="SELECT date,time,name,province,county,id_date ,id,COUNT(id_staff) AS num
-        FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id WHERE (date LIKE '%$key%' or time LIKE '%$key%' or name LIKE '%$key%' or province LIKE '%$key%' or county LIKE '%$key%' ) and status = 1
+        FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id WHERE (date LIKE '%$key%' or time LIKE '%$key%' or name LIKE '%$key%' or province LIKE '%$key%' or county LIKE '%$key%' ) 
+        GROUP By id_date
+       UNION
+       SELECT date,time,name,province,county,id_date ,id,COUNT(id_staff) AS num
+        FROM detail_of_staff_in_checkpoint NATURAL JOIN staff NATURAL JOIN position NATURAL JOIN Date INNER JOIN CheckPoint ON id_checkpoint=id 
         GROUP By id_date
        HAVING num LIKE '%$key%'";
         $result=$conn->query($sql);
