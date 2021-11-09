@@ -16,7 +16,7 @@
     {
         $positionList=[];
         require("connect_database.php");
-        $sql="SELECT DISTINCT * FROM position";
+        $sql="SELECT DISTINCT * FROM position WHERE status_p=1";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -37,7 +37,7 @@
     {
 
         require("connect_database.php");
-        $sql="SELECT DISTINCT * FROM position WHERE id_position='$id_position'";
+        $sql="SELECT DISTINCT * FROM position WHERE id_position='$id_position' and status_p=1";
         $result=$conn->query($sql);
         $my_row=$result->fetch_assoc();
         $id_position = $my_row[id_position];
@@ -52,7 +52,7 @@
     {
         $positionList=[];
         require("connect_database.php");
-        $sql="SELECT * FROM position  WHERE id_position like '%$key%' or name_position like '%$key%' or income like '%$key%' ";
+        $sql="SELECT * FROM position  WHERE (id_position like '%$key%' or name_position like '%$key%' or income like '%$key%') and status_p=1 ";
         $result=$conn->query($sql);
         while($my_row=$result->fetch_assoc())
         {
@@ -71,7 +71,7 @@
     { 
        
        require("connect_database.php");
-       $sql = "INSERT INTO `position`(`id_position`, `name_position`, `income`) VALUES ('$id_position','$name_position',$income)";
+       $sql = "INSERT INTO `position`(`id_position`, `name_position`, `income`, `status_p`) VALUES ('$id_position','$name_position',$income,1)";
        $result = $conn->query($sql);
  
        require("connection_close.php");
@@ -82,12 +82,21 @@
      public static function update($id_position,$name_position,$income,$id)
      {
         require("connect_database.php");
-        $sql="UPDATE `position` SET `id_position`='$id_position',`name_position`='$name_position',`income`=$income WHERE id_staff = '$id'";
+        $sql="UPDATE `position` SET `id_position`='$id_position',`name_position`='$name_position',`income`=$income WHERE id_position = '$id'";
         $result=$conn->query($sql);
         require("connection_close.php");
         return ;
         
      }
+     public static function delete($id)
+     {
+         require_once("connect_database.php");
+         $sql="UPDATE `position` SET`status_p`=2 WHERE id_position = '$id'";
+         $result=$conn->query($sql);
+         require("connection_close.php");
+         return ;
+     }
+
      
 
 

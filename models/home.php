@@ -48,6 +48,19 @@
 
 
     }
+    public static function getamount()
+    {
+        require("connect_database.php");
+        $sql="SELECT COUNT(id_staff) AS num
+        FROM staff
+        WHERE status=1";
+        $result=$conn->query($sql);
+        $my_row=$result->fetch_assoc();
+        $num=$my_row[num];
+        require("connection_close.php");
+        return new Home($id_staff_checkpoint,$time,$date,$name_checkpoint,$province,$county,$id_date,$num);;
+
+    }
    
     public static function search($key)
     {

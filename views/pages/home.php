@@ -1,5 +1,8 @@
 <p> Welcome to our homepage </p>
 <table border=1>
+<?php
+        echo "จำนวนพนักงานทั้งหมด [".$home->num ."] คน";
+?> <br>
 <form method="get" action="">
         <input type="text" name="key">
         <input type="hidden" name="controller" value="pages">

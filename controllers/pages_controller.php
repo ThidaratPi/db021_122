@@ -4,6 +4,7 @@
         public function home()
         { 
             $home_List=Home::getAll();
+            $home=Home::getamount();
             require_once('views/pages/home.php');
          }
         public function error()

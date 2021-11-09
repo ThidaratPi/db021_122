@@ -51,6 +51,15 @@
 
 
     }
+    public function delete()
+    {
+       
+        $id=$_GET['id'];
+        Position::delete($id);
+        PositionController::index();
+
+    }
+    
   
    
     
